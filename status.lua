@@ -66,8 +66,12 @@ local function GetBattery(elems, window)
 		return
 	end
 
-	for _, b in ipairs(wezterm.battery_info()) do
-		AddElement(elems, HEADER_BATTERY, string.format("%.0f%%", b.state_of_charge * 100))
+	local battery = wezterm.battery_info()[1]
+	local battery_state = battery.state_of_charge
+	if battery_state ~= battery_state then
+		return
+	else
+		AddElement(elems, HEADER_BATTERY, string.format("%.0f%%", battery_state * 100))
 	end
 end
 
