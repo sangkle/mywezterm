@@ -57,6 +57,10 @@ local function GetDate(elems)
 	AddElement(elems, HEADER_DATE, wezterm.strftime("%a %b %-d"))
 end
 
+local function GetWorkspace(elems, window)
+	AddElement(elems, { Foreground = { Color = "#bcbabe" }, Text = "" }, window:active_workspace())
+end
+
 local function GetTime(elems)
 	AddElement(elems, HEADER_TIME, wezterm.strftime("%H:%M"))
 end
@@ -78,13 +82,14 @@ end
 local function LeftUpdate(window, pane)
 	local elems = {}
 	GetKeyboard(elems, window)
+	GetWorkspace(elems, window)
 	window:set_left_status(wezterm.format(elems))
 end
 
 local function RightUpdate(window, pane)
 	local elems = {}
 	GetHostAndCwd(elems, pane)
-	GetDate(elems)
+	-- GetDate(elems)
 	GetBattery(elems, window)
 	GetTime(elems)
 	window:set_right_status(wezterm.format(elems))

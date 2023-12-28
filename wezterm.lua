@@ -20,12 +20,8 @@ config.window_decorations = "RESIZE"
 config.window_close_confirmation = "AlwaysPrompt"
 config.scrollback_lines = 3000
 config.default_workspace = "main"
-
--- Colour
 config.color_scheme = "Catppuccin Mocha"
 config.window_background_opacity = 0.9
-config.colors = require("tabbar").colors
--- Inactive panes
 config.inactive_pane_hsb = {
 	saturation = 0.44,
 	brightness = 1.0,
@@ -41,6 +37,7 @@ config.key_tables = keybindings.key_tables
 config.mouse_bindings = keybindings.mouse_bindings
 
 -- Tab bar
+config.colors = require("tabbar").colors
 config.use_fancy_tab_bar = false
 config.status_update_interval = 1000
 config.tab_bar_at_bottom = false
