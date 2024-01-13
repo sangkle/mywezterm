@@ -32,27 +32,6 @@ local function GetKeyboard(elems, window)
 	AddIcon(elems, window:leader_is_active() and ACTIVE_LEADER or INACTIVE_LEADER)
 end
 
-local function GetHostAndCwd(elems, pane)
-	local uri = pane:get_current_working_dir()
-
-	if not uri then
-		return
-	end
-
-	local cwd_uri = uri:sub(8)
-	local slash = cwd_uri:find("/")
-
-	if not slash then
-		return
-	end
-
-	local host = cwd_uri:sub(1, slash - 1)
-	local dot = host:find("[.]")
-
-	AddElement(elems, HEADER_HOST, dot and host:sub(1, dot - 1) or host)
-	AddElement(elems, HEADER_CWD, cwd_uri:sub(slash))
-end
-
 local function GetDate(elems)
 	AddElement(elems, HEADER_DATE, wezterm.strftime("%a %b %-d"))
 end
@@ -88,9 +67,8 @@ end
 
 local function RightUpdate(window, pane)
 	local elems = {}
-	GetHostAndCwd(elems, pane)
 	-- GetDate(elems)
-	GetBattery(elems, window)
+	-- GetBattery(elems, window)
 	GetTime(elems)
 	window:set_right_status(wezterm.format(elems))
 end

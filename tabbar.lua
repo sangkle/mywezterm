@@ -28,7 +28,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 	local foreground = "#808080"
 
 	if tab.is_active then
-		background = "#2b2042"
+		background = "#216022"
 		foreground = "#c0c0c0"
 	elseif hover then
 		background = "#3b3052"
@@ -44,14 +44,14 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 	title = wezterm.truncate_right(title, max_width - 2)
 
 	return {
-		{ Background = { Color = background } },
-		{ Foreground = { Color = foreground } },
+		-- { Background = { Color = background } },
+		-- { Foreground = { Color = foreground } },
 		{ Text = " " .. SOLID_LEFT_ARROW .. " " },
-		{ Background = { Color = background } },
-		{ Foreground = { Color = foreground } },
+		-- { Background = { Color = background } },
+		-- { Foreground = { Color = foreground } },
 		{ Text = title },
-		{ Background = { Color = background } },
-		{ Foreground = { Color = edge_foreground } },
+		-- { Background = { Color = background } },
+		-- { Foreground = { Color = edge_foreground } },
 		{ Text = " " },
 	}
 end)
@@ -72,74 +72,35 @@ end)
 
 M.colors = {
 	tab_bar = {
-		-- The color of the strip that goes along the top of the window
-		-- (does not apply when fancy tab bar is in use)
-		background = "rgba(0 0 10 0.8)",
-
-		-- The active tab is the one that has focus in the window
+		background = "rgba(0 0 0 0.8)",
 		active_tab = {
-			-- The color of the background area for the tab
-			bg_color = "#2b2042",
-			-- The color of the text for the tab
-			fg_color = "#c0c0c0",
-
-			-- Specify whether you want "Half", "Normal" or "Bold" intensity for the
-			-- label shown for this tab.
-			-- The default is "Normal"
+			bg_color = "rgba(10 100 20 0.8)",
+			fg_color = "rgba(30 194 30 1)",
 			intensity = "Normal",
-
-			-- Specify whether you want "None", "Single" or "Double" underline for
-			-- label shown for this tab.
-			-- The default is "None"
 			underline = "None",
-
-			-- Specify whether you want the text to be italic (true) or not (false)
-			-- for this tab.  The default is false.
 			italic = false,
-
-			-- Specify whether you want the text to be rendered with strikethrough (true)
-			-- or not for this tab.  The default is false.
 			strikethrough = false,
 		},
-
-		-- Inactive tabs are the tabs that do not have focus
 		inactive_tab = {
-			bg_color = "#1b1032",
-			fg_color = "#808080",
-
-			-- The same options that were listed under the `active_tab` section above
-			-- can also be used for `inactive_tab`.
+			bg_color = "rgba(20 20 20 1.7)",
+			fg_color = "#6060a0",
+			italic = false,
 		},
-
-		-- You can configure some alternate styling when the mouse pointer
-		-- moves over inactive tabs
 		inactive_tab_hover = {
 			bg_color = "#3b3052",
 			fg_color = "#909090",
 			italic = true,
-
-			-- The same options that were listed under the `active_tab` section above
-			-- can also be used for `inactive_tab_hover`.
 		},
 
-		-- The new tab button that let you create new tabs
 		new_tab = {
 			bg_color = "#1b1032",
 			fg_color = "#808080",
-
-			-- The same options that were listed under the `active_tab` section above
-			-- can also be used for `new_tab`.
 		},
 
-		-- You can configure some alternate styling when the mouse pointer
-		-- moves over the new tab button
 		new_tab_hover = {
 			bg_color = "#3b3052",
 			fg_color = "#909090",
 			italic = true,
-
-			-- The same options that were listed under the `active_tab` section above
-			-- can also be used for `new_tab_hover`.
 		},
 	},
 }
