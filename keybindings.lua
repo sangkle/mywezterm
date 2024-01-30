@@ -241,6 +241,10 @@ local custom_keys = {
 	},
 	{ key = "r", mods = "LEADER", action = act.ActivateKeyTable({ name = "resize_pane", one_shot = false }) },
 	{ key = "f", mods = "LEADER", action = act.ToggleFullScreen },
+
+	{ key = "S", mods = "LEADER", action = wezterm.action({ EmitEvent = "save_session" }) },
+	{ key = "L", mods = "LEADER", action = wezterm.action({ EmitEvent = "load_session" }) },
+	{ key = "R", mods = "LEADER", action = wezterm.action({ EmitEvent = "restore_session" }) },
 }
 for i = 1, 9 do
 	table.insert(custom_keys, {
